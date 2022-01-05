@@ -33,6 +33,41 @@ create table tb_part_dummy_${startym} partition of tb_part_dummy for values from
 EOF
 done
 
+psql <<EOF
+insert tb_part_dummy (
+logdate,
+col_1_f,
+col_2_f,
+col_3_f,
+col_4_f,
+col_5_f,
+col_6_v,
+col_7_v,
+col_8_v,
+col_9_d,
+col_10_d,
+col_11_m,
+col_12_m
+) 
+select
+cast(date '2019-02-01' + random() * interval '35 month' as date),
+random(),
+random(),
+random(),
+random(),
+random(),
+md5(random()::text || clock_timestamp()::text)::uuid,
+md5(random()::text || clock_timestamp()::text)::uuid,
+md5(random()::text || clock_timestamp()::text)::uuid,
+random() * 100000000,
+random() * 100000000,
+random() * 100000000,
+random() * 100000000
+from generate_series(1,10000000)
+;
+EOF
+
+
 # The below table are a representative for a import table
 psql <<EOF
 create table tb_part_dummy_tsv (
