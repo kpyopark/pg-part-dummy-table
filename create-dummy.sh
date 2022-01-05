@@ -33,4 +33,25 @@ create table tb_part_dummy_${startym} partition of tb_part_dummy for values from
 EOF
 done
 
+# The below table are a representative for a import table
+psql <<EOF
+create table tb_part_dummy_tsv (
+  logdate date not null, 
+  logid   bigserial,
+  col_1_f float, 
+  col_2_f float,
+  col_3_f float,
+  col_4_f float,
+  col_5_f float,
+  col_6_v varchar(255),
+  col_7_v varchar(255),
+  col_8_v varchar(255),
+  col_9_d double precision,
+  col_10_d double precision,
+  col_11_m decimal(25,5),
+  col_12_m decimal(25,5),
+  constraint pk_tb_part_dummy_tsv primary key (logdate, logid)
+);
+EOF
+
 

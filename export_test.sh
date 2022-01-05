@@ -9,7 +9,7 @@ CREATE EXTENSION IF NOT EXISTS aws_s3 CASCADE;
 EOF
 
 bucket_name=apg-export-test
-cluster_id=g-lsn-tets
+cluster_id=pg-lsn-tets
 table_name=tb_part_dummy
 region=ap-northeast-2
 
