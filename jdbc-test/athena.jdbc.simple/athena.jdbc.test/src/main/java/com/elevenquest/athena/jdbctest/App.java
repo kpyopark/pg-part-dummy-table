@@ -234,7 +234,7 @@ public class App {
             public void run() {
                 try {
                     long startTime = System.currentTimeMillis();
-                    HashMap<String, Integer> processmap = new HashMap();
+                    HashMap<String, Integer> processmap = new HashMap<String, Integer>();
                     while (!needExit) {
                         Thread.sleep(1000);
                         BufferedReader isr = null;
